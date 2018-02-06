@@ -6,7 +6,7 @@ const events = []
 
 //list
 router.get('/', function(req, res, next) {
-  res.send('This will be used to list all events');
+  res.json(events);
 });
 
 //add
