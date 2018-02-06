@@ -1,3 +1,3 @@
-let events = [];
+let events = []
 
 module.exports = events
