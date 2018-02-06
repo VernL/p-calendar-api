@@ -24,18 +24,18 @@ router.post('/', function(req, res, next) {
 //view
 router.get('/:id', function(req, res, next) {
   let event = events.find(event => event.id === req.params.id);
-  if(event){
-    res.json(event);
-  } else {
+  if(!event) {
     console.log('Event not found!');
     res.sendStatus(404);
+  } else {
+    res.json(event);
   }
 });
 
 //edit
 router.put('/:id', function(req, res, next) {
-  let index = events.findIndex(event => event.id === req.params.id)
-  if(index === -1){
+  let index = events.findIndex(event => event.id === req.params.id);
+  if(index === -1) {
     console.log('Event not found!');
     res.sendStatus(404);
   } else {
