@@ -1,5 +1,5 @@
 const express = require('express');
-const Event = require('../models/events');
+const Event = require('../models/event');
 const router = express.Router();
 
 const events = [];
@@ -39,7 +39,7 @@ router.put('/:id', function(req, res, next) {
     console.log('Event not found!');
     res.sendStatus(404);
   } else {
-    events[index] = {...events[index],...req.body};
+    events[index] = {...events[index], ...req.body};
     res.json(events[index]);
   }
 });
