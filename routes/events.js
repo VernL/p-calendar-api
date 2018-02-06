@@ -1,12 +1,11 @@
 const express = require('express');
 const Event = require('../models/event');
 const router = express.Router();
-
-const events = [];
+const eventsDB = require('../models')
 
 //list
 router.get('/', function(req, res, next) {
-  res.json(events);
+  res.json(eventsDB);
 });
 
 //add
@@ -16,14 +15,14 @@ router.post('/', function(req, res, next) {
     req.body.patientName,
     req.body.duration
   );
-  events.push(event);
+  eventsDB.push(event);
   console.log('New event added!');
   res.json(event);
 });
 
 //view
 router.get('/:id', function(req, res, next) {
-  let event = events.find(event => event.id === req.params.id);
+  let event = eventsDB.find(event => event.id === req.params.id);
   if(!event) {
     console.log('Event not found!');
     res.sendStatus(404);
@@ -34,25 +33,25 @@ router.get('/:id', function(req, res, next) {
 
 //edit
 router.put('/:id', function(req, res, next) {
-  let index = events.findIndex(event => event.id === req.params.id);
+  let index = eventsDB.findIndex(event => event.id === req.params.id);
   if(index === -1) {
     console.log('Event not found!');
     res.sendStatus(404);
   } else {
-    events[index] = {...events[index], ...req.body};
-    res.json(events[index]);
+    eventsDB[index] = {...eventsDB[index], ...req.body};
+    res.json(eventsDB[index]);
   }
 });
 
 //remove
 router.delete('/:id', function(req, res, next) {
-  let index = events.findIndex(event => event.id === req.params.id);
+  let index = eventsDB.findIndex(event => event.id === req.params.id);
   if(index === -1) {
     console.log('Event not found!');
     res.sendStatus(404);
   } else {
-    events.splice(index, 1)
-    res.json(events);
+    eventsDB.splice(index, 1)
+    res.json(eventsDB);
   }
 });
 
