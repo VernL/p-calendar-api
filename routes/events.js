@@ -39,14 +39,21 @@ router.put('/:id', function(req, res, next) {
     console.log('Event not found!');
     res.sendStatus(404);
   } else {
-    events[index] = {...req.body};
+    events[index] = {...events[index],...req.body};
     res.json(events[index]);
   }
 });
 
 //remove
 router.delete('/:id', function(req, res, next) {
-  res.send('This will be used to remove an event');
+  let index = events.findIndex(event => event.id === req.params.id);
+  if(index === -1) {
+    console.log('Event not found!');
+    res.sendStatus(404);
+  } else {
+    events.splice(index, 1)
+    res.json(events);
+  }
 });
 
 module.exports = router;
