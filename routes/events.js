@@ -13,7 +13,8 @@ router.post('/', function (req, res, next) {
   let event = new Event(
     req.body.title,
     req.body.patientName,
-    req.body.duration
+    req.body.eventStartDate,
+    req.body.eventEndDate
   )
   eventsDB.push(event)
   console.log('New event added!')
