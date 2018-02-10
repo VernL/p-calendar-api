@@ -1,6 +1,10 @@
 # p-calendar-api
 A simple calendar service API
 
+## Live Site 
+
+The api is live on heroku @ https://warm-plateau-57879.herokuapp.com/. Have fun. 
+
 ## Install and usage
 
 run `npm install` to install dependencies.
@@ -17,7 +21,8 @@ The following endpoints are available:
 {
     "title": "The title of the event",
     "patientName": "The name of the patient"
-    "duration": "The duration of the event in days"
+    "eventStartDate": "YYYY-DD-MM"  
+    "eventEndDate": "YYYY-DD-MM" 
 }
 ```
 
